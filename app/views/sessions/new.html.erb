@@ -1,0 +1,37 @@
+<h1>Sign in</h1>
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with url: sessions_path do |sign_in_form| %>
+  <div class="flex flex-col items-end w-fit gap-4">
+    <div>
+      <%= sign_in_form.label :username %>
+      <%= sign_in_form.text_field :username %>
+    </div>
+
+    <div>
+      <%= sign_in_form.label :password %>
+      <%= sign_in_form.password_field :password %>
+    </div>
+
+    <div>
+      <%= sign_in_form.label :password_confirmation, "Confirmation" %>
+      <%= sign_in_form.password_field :password_confirmation %>
+    </div>
+
+    <%= sign_in_form.submit "Sign in", class: "btn" %>
+
+    <p>
+      You don't have an account ? <%= link_to "Sign up", new_user_path %>
+    </p>
+  </div>
+<% end %>
+
