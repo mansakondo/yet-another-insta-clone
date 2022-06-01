@@ -1,0 +1,17 @@
+<%= form_with model: @post do |post_form| %>
+  <div class="flex flex-col gap-4 w-fit">
+    <div class="flex flex-col">
+      <%= post_form.label :title %>
+      <%= post_form.text_field :title %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= post_form.label :content %>
+      <%= post_form.text_area :content %>
+    </div>
+
+    <div class="flex self-end">
+      <%= post_form.submit "Post" %>
+    </div>
+  </div>
+<% end %>

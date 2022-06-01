@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   get "sign_in", to: "sessions#new", as: "sign_in"
   delete "sign_out", to: "sessions#destroy", as: "sign_out"
+
+  resources :posts
 end
