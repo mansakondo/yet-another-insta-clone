@@ -92,6 +92,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_220911) do
     t.index ["user_id"], name: "index_likes_on_user_id", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id"], name: "index_likes_on_user_id", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
