@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    detect_editable_comment
   end
 
   def new
@@ -31,7 +33,11 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post
     else
-      render :edit
+      if @post.author == Current.user
+        redirect_back_or_to edit_post_path(@post)
+      else
+        redirect_back_or_to @post
+      end
     end
   end
 
@@ -45,6 +51,14 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:id, :title, :content)
+      params.require(:post).permit(:id, :title, :content, comments_attributes: [:id, :content, :author_id])
+    end
+
+    def detect_editable_comment
+      if params[:editable_comment_id] && (comment = Comment.find(params[:editable_comment_id]))
+        if (comment.post == @post) && (comment.author == Current.user)
+          @editable_comment = comment
+        end
+      end
     end
 end

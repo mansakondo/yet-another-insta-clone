@@ -1,0 +1,28 @@
+<div class="flex flex-col p-4 shadow gap-4">
+  <% if comment == @editable_comment %>
+    <%= render "comments/form", comment: comment %>
+  <% else %>
+    <% if comment.author == Current.user %>
+      <div class="flex justify-end gap-4">
+        <%= link_to "Edit", post_path(comment.post, editable_comment_id: comment.id) %>
+        <%= button_to "Delete", comment, method: :delete %>
+      </div>
+    <% end %>
+
+    <div class="flex gap-2">
+      <span>
+        <%= link_to comment.author.username, comment.author %>
+      </span>
+      <span>
+        <%= comment.created_at %>
+      </span>
+      <span>
+        <%= comment.updated_at %>
+      </span>
+    </div>
+
+    <p>
+      <%= comment.content %>
+    </p>
+  <% end %>
+</div>

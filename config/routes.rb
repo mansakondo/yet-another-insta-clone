@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy", as: "sign_out"
 
   resources :posts
+
+  resources :comments, only: %i( destroy )
 end

@@ -1,0 +1,10 @@
+<%= form_with model: comment.post do |post_form| %>
+  <%= post_form.fields_for :comments, comment do |comment_form| %>
+    <%= comment_form.hidden_field :author_id %>
+
+    <div class="flex flex-col gap-2 w-[50%]">
+      <%= comment_form.text_area :content, class: "rounded" %>
+      <%= comment_form.submit class: "flex self-end" %>
+    </div>
+  <% end %>
+<% end %>
