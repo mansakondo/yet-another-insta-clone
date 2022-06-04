@@ -1,5 +1,25 @@
-<h1>
-  <%= @user.username %>
-</h1>
+<div class="flex gap-4">
+  <h1>
+    <%= @user.username %>
+  </h1>
 
-<%= button_to "Delete account", @user, method: :delete %>
+  <% unless @user == Current.user  %>
+    <% if Current.user.follows? @user %>
+      <%= button_to "Unfollow", follow_path(@user), method: :delete %>
+    <% else %>
+      <%= button_to "Follow", follows_path(@user) %>
+    <% end %>
+  <% end %>
+
+  <span>
+    Followers <%= @user.followers.size %>
+  </span>
+
+  <span>
+    Followings <%= @user.followings.size %>
+  </span>
+</div>
+
+<% if @user == Current.user %>
+  <%= button_to "Delete account", @user, method: :delete %>
+<% end %>

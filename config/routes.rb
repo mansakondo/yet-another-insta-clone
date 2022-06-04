@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   post "likes/:likeable_type/:likeable_id", to: "likes#create", as: :likes
   delete "likes/:id", to: "likes#destroy", as: :like
+
+  post "follows/:followed_id", to: "follows#create", as: :follows
+  delete "follows/:followed_id", to: "follows#destroy", as: :follow
 end
