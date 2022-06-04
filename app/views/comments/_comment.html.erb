@@ -1,4 +1,4 @@
-<div class="flex flex-col p-4 shadow gap-4">
+<div id="<%= dom_id(comment) %>" class="flex flex-col p-4 shadow gap-4 target:border">
   <% if comment == @editable_comment %>
     <%= render "comments/form", comment: comment %>
   <% else %>
@@ -24,5 +24,7 @@
     <p>
       <%= comment.content %>
     </p>
+
+    <%= render "shared/like_button", likeable: comment %>
   <% end %>
 </div>

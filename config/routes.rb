@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :comments, only: %i( destroy )
+
+  post "likes/:likeable_type/:likeable_id", to: "likes#create", as: :likes
+  delete "likes/:id", to: "likes#destroy", as: :like
 end
