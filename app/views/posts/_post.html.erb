@@ -19,8 +19,8 @@
   <% if post.youtube_url %>
     <iframe src="<%= post.youtube_url %>" height="315" frameborder="0"></iframe>
   <% else %>
-    <% if post.media.representable? %>
-      <%= image_tag post.media.representation(resize_to_limit: [3000, 3000]) %>
+    <% if post.media_url %>
+      <%= image_tag post.media_url %>
     <% end %>
   <% end %>
 

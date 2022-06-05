@@ -1,8 +1,12 @@
+<%= content_for :meta do %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
+
 <%= form_with model: @post do |post_form| %>
   <div class="flex flex-col gap-4 w-fit">
     <div class="flex flex-col">
-      <%= post_form.label :media, "Upload a picture" %>
-      <%= post_form.file_field :media %>
+      <%= post_form.label :media_url, "Upload a picture" %>
+      <%= post_form.hidden_field :media_url, class: "simple-file-upload", "data-turbo": false %>
     </div>
 
     <p>Or...</p>

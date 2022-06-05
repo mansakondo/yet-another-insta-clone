@@ -8,7 +8,5 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :comments
 
-  has_one_attached :media
-
   attribute :youtube_url, YouTubeURLType.new
 end
