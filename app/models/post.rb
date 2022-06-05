@@ -7,4 +7,6 @@ class Post < ApplicationRecord
     dependent: :destroy
 
   accepts_nested_attributes_for :comments
+
+  has_one_attached :media
 end

@@ -2,7 +2,9 @@
   <%= Current.user.username %>
 </h1>
 
-<%= render @posts %>
+<div id="posts" class="flex flex-col gap-4">
+  <%= render @posts %>
+</div>
 
 <%= link_to new_post_path do %>
   <div class="fixed top-[85%] left-[85%] md:left-[90%] flex items-center justify-center w-16 h-16 bg-black rounded-full shadow-xl">

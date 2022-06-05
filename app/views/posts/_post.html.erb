@@ -6,6 +6,7 @@
         <%= button_to "Delete", post, method: :delete %>
       </div>
     <% end %>
+
     <span>
       <%= link_to post.author.username, post.author %>
     </span>
@@ -14,6 +15,10 @@
       <%= post.created_at %>
     </span>
   </div>
+
+  <% if post.media.representable? %>
+    <%= image_tag post.media.representation(resize_to_limit: [3000, 3000]) %>
+  <% end %>
 
   <h2>
     <%= link_to post.title, post %>
