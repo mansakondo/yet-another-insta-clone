@@ -23,5 +23,8 @@
     <%= post.content %>
   </p>
 
-  <%= render "shared/like_button", likeable: post %>
+  <div class="flex items-center justify-between">
+    <%= render "shared/like_button", likeable: post %>
+    <%= link_to "#{post.comments.size} comments", post_path(post, anchor: "comments") %>
+  </div>
 </div>
