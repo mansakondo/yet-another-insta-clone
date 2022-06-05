@@ -2,13 +2,13 @@
   <div>
     <% if post.author == Current.user %>
       <div class="flex justify-end gap-4">
-        <%= link_to "Edit", edit_post_path(post) %>
-        <%= button_to "Delete", post, method: :delete %>
+        <%= link_to "Edit", edit_post_path(post), class: "link" %>
+        <%= button_to "Delete", post, method: :delete, class: "link" %>
       </div>
     <% end %>
 
     <span>
-      <%= link_to post.author.username, post.author %>
+      <%= link_to post.author.username, post.author, class: "font-bold link" %>
     </span>
 
     <span>
@@ -25,7 +25,7 @@
   <% end %>
 
   <h2>
-    <%= link_to post.title, post %>
+    <%= link_to post.title, post, class: "font-bold link" %>
   </h2>
 
   <p>
@@ -34,6 +34,6 @@
 
   <div class="flex items-center justify-between">
     <%= render "shared/like_button", likeable: post %>
-    <%= link_to "#{post.comments.size} comments", post_path(post, anchor: "comments") %>
+    <%= link_to "#{post.comments.size} comments", post_path(post, anchor: "comments"), class: "link" %>
   </div>
 </div>
