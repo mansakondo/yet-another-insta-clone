@@ -4,19 +4,35 @@ class User < ApplicationRecord
   has_many :follows_as_follower,
     class_name: "Follow",
     foreign_key: "follower_id",
-    counter_cache: :followings_count
+    counter_cache: :followings_count,
+    dependent: :destroy
 
   has_many :follows_as_followed,
     class_name: "Follow",
     foreign_key: "followed_id",
-    counter_cache: :followers_count
+    counter_cache: :followers_count,
+    dependent: :destroy
 
   has_many :followers,
-    through: :follows_as_followed
+    through: :follows_as_followed,
+    dependent: :destroy
 
   has_many :followings,
     through: :follows_as_follower,
-    source: :followed
+    source: :followed,
+    dependent: :destroy
+
+  has_many :posts,
+    foreign_key: "author_id",
+    dependent: :destroy
+
+  has_many :comments,
+    foreign_key: "author_id",
+    dependent: :destroy
+
+  has_many :likes,
+    foreign_key: "author_id",
+    dependent: :destroy
 
   validates :username, presence: true
 
