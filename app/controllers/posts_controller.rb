@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:id, :media, :title, :content, comments_attributes: [:id, :content, :author_id])
+      params.require(:post).permit(:id, :media, :youtube_url, :title, :content, comments_attributes: [:id, :content, :author_id])
     end
 
     def detect_editable_comment
