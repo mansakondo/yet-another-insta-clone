@@ -28,9 +28,11 @@
           <% end %>
 
           <%= button_to "Sign out", sign_out_path, method: :delete %>
+          <%= button_to "Delete account", Current.user, method: :delete %>
         </div>
       </div>
     <% end %>
+
     <div class="p-8 mx-auto my-0 md:w-1/2">
       <%= yield %>
     </div>

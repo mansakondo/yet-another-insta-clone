@@ -1,4 +1,4 @@
-<div class="flex gap-4">
+<div class="flex items-center gap-4">
   <h1>
     <%= @user.username %>
   </h1>
@@ -19,7 +19,3 @@
     Followings <%= @user.followings.size %>
   </span>
 </div>
-
-<% if @user == Current.user %>
-  <%= button_to "Delete account", @user, method: :delete %>
-<% end %>
